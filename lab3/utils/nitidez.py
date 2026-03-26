@@ -23,3 +23,12 @@ Buscar el mejor valor de c para mejorar la nitidez de la imagen
 Aplicar la funcion de mejora de nitidez a las imagenes de resultados
 Guardarlos bajo el nombre lab3_imagen3_x
 '''
+import cv2
+
+def nitidez(imagen, nombre_resultado, c):
+    # Implementa la función de mejora de nitidez utilizando el operador Laplaciano.
+    # La función debe aplicar la fórmula g(x, y) = f(x, y) + c * delta^2 f(x, y).
+    laplaciano = cv2.Laplacian(imagen, cv2.CV_64F)
+    resultado = cv2.convertScaleAbs(imagen + c * laplaciano)
+    cv2.imwrite(nombre_resultado, resultado)
+    
