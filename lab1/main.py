@@ -1,6 +1,6 @@
 import cv2
 
-image = cv2.imread('lab1_imagen.jpg')
+image = cv2.imread('src/lab1_imagen.jpg')
 
 # Obtener las dimensiones de la imagen
 height, width, channels = image.shape
@@ -13,11 +13,11 @@ for y in range(height):
         if (x) % 2 == (y) % 2:
             image[y, x] = [0, 0, 0] 
 
-cv2.imwrite("lab1_imagen1.jpg", image)
+cv2.imwrite("results/lab1_imagen1.jpg", image)
 
 for y in range(height):
     for x in range(width):
         if (x) % 2 == (y) % 2:
             image[y, x] = [255, 255, 255]  
 
-cv2.imwrite("lab1_imagen2.jpg", image)
+cv2.imwrite("results/lab1_imagen2.jpg", image)
