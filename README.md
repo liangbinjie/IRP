@@ -8,7 +8,7 @@ Crear un entorno de trabajo
 ```bash
 python3 -m venv .venv
 # Activaar el entorno:
-# Mac source ./.venv/bin/activate 
+# Mac: source ./.venv/bin/activate 
 # Windows: .\.venv\Scripts\activate
 # Linux: source ./.venv/bin/activate
 ```
