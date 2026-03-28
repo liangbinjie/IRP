@@ -18,9 +18,9 @@ def main():
         print("Filtro no valido.")
         return
     
-    input_filename = f'lab1_imagen{filtro}_{serie}.jpg'                 # se obtiene imagen desde la carpeta img/
-    interpolar_output_filename = f'lab3_imagen{filtro}_{serie}.jpg'     # se guarda imagen en la carpeta results/imagenX_Y/ 
-    nitidez_output_filename = f'lab3_imagen3_{serie}.jpg'               # se guarda imagen en la carpeta results/imagen3_X/ 
+    input_filename = f'lab1_imagen{filtro}_{serie}.png'                 # se obtiene imagen desde la carpeta img/
+    interpolar_output_filename = f'lab3_imagen{filtro}_{serie}.png'     # se guarda imagen en la carpeta results/imagenX_Y/ 
+    nitidez_output_filename = f'lab3_imagen3_{serie}.png'               # se guarda imagen en la carpeta results/imagen3_X/ 
     
 
     if opcion == 1:
