@@ -11,9 +11,8 @@ def derivarX(image, width, height):
     for y in range(height):
         for x in range(width - 1):
             # Restar el siguiente pixel al pixel actual
-            gx = int(gray[y, x+1]) - int(gray[y, x])
-            if 255 > gx > 15: # Si el valor de la derivada es mayor a 15 y menor a 255, se considera un borde
-                image_copy[y, x] = (0, 0, 0)
+            gx = abs(int(gray[y, x+1]) - int(gray[y, x]))
+            image_copy[y, x] = gx
 
     return image_copy
 
@@ -26,8 +25,36 @@ def derivarY(image, width, height):
     for y in range(height - 1):
         for x in range(width):
             # Restar el siguiente pixel al pixel actual
-            gy = int(gray[y+1, x]) - int(gray[y, x])
-            if 255 > gy > 15:
-                image_copy[y, x] = (0, 0, 0)
+            gy = abs(int(gray[y+1, x]) - int(gray[y, x]))
+            image_copy[y, x] = gy
+
+    return image_copy
+
+def derivarXBGR(imagen, width, height):
+    """
+    Deriva la imagen en la direccion X, agarrando el siguiente pixel restando al pixel actual
+    """
+    image_copy = imagen.copy()
+
+    for y in range(height):
+        for x in range(width - 1):
+            # Restar el siguiente pixel al pixel actual
+            for c in range(3):  # Para cada canal de color (B, G, R)
+                gx = abs(int(imagen[y, x+1, c]) - int(imagen[y, x, c]))
+                image_copy[y, x, c] = gx
+
+    return image_copy
+
+def derivarYBGR(imagen, width, height):
+    """
+    Deriva la imagen en la direccion Y, agarrando el siguiente pixel restando al pixel actual
+    """
+    image_copy = imagen.copy()
+    for y in range(height - 1):
+        for x in range(width):
+            # Restar el siguiente pixel al pixel actual
+            for c in range(3):  # Para cada canal de color (B, G, R)
+                gy = abs(int(imagen[y+1, x, c]) - int(imagen[y, x, c]))
+                image_copy[y, x, c] = gy
 
     return image_copy
