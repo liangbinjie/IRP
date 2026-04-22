@@ -30,7 +30,7 @@ def main():
     a = complex(0.8, 0.7)
     b = 100
 
-    output = mapeo.mapeo_lineal_img(img, a, b)
+    output = mapeo.mapeo_lineal2(img, a, b)
 
 
     cv2.imshow("Original", img)
