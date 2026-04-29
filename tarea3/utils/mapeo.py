@@ -49,29 +49,21 @@ Mapeo inverso en cada pixel de la imagen, para cada pixel en w,
 se calcula su correspondiente pixel en z usando la formula inversa de w = f(z), 
 y se asigna el valor del pixel de z al pixel correspondiente en w.
 """
-def mapeo_inverso(img, original, a, b, c, d):
+def inverso(img, original, a, b, c, d):
     height, width, _ = img.shape
     orig_h, orig_w, _ = original.shape
 
-    output = img.copy()
-
-    cx, cy = width // 2, height // 2
+    output = np.zeros_like(img)
 
     for y in range(height):
         for x in range(width):
-
-            w_pixel = complex(x - cx, y - cy)
-
+            w_pixel = complex(x, y)
             den = (a - c*w_pixel)
             if den == 0:
                 continue
-
             z_pixel = (d*w_pixel - b) / den
-
-            z_x = int(round(z_pixel.real + cx))
-            z_y = int(round(z_pixel.imag + cy))
-
+            z_x = int(round(z_pixel.real))
+            z_y = int(round(z_pixel.imag))
             if 0 <= z_x < orig_w and 0 <= z_y < orig_h:
                 output[y, x] = original[z_y, z_x]
-
-    return output 
+    return output

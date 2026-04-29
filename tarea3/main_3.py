@@ -23,7 +23,7 @@ def main():
         # Generar el mapeo directo de la imagen en el Plano w
         imagen2 = mapeo.fn(img, a, b, c, d)
 
-        imagen3 = mapeo.mapeo_inverso(imagen2, img, a, b, c, d)
+        imagen3 = mapeo.inverso(imagen2, img, a, b, c, d)
 
         # Guardar la imagen resultante
         cv2.imwrite('output/imagen3.jpg', imagen3)
