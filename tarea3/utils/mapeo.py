@@ -53,16 +53,16 @@ def inverso(img, original, a, b, c, d):
     height, width, _ = img.shape
     orig_h, orig_w, _ = original.shape
 
-    output = np.zeros_like(img)
+    output = np.zeros_like(img)         # genera una imagen de salida del mismo tamaño que la imagen de entrada, pero completamente negra
 
     for y in range(height):
         for x in range(width):
-            w_pixel = complex(x, y)
-            den = (a - c*w_pixel)
-            if den == 0:
+            w_pixel = complex(x, y)     # representa el pixel actual en el plano w como un número complejo
+            den = (a - c*w_pixel)       # calcula el denominador de la fórmula inversa, que es a - c*w
+            if den == 0:                # si el denominador es cero, significa que no hay un pixel correspondiente en z para este pixel en w, por lo que se omite este pixel
                 continue
-            z_pixel = (d*w_pixel - b) / den
-            z_x = int(round(z_pixel.real))
+            z_pixel = (d*w_pixel - b) / den # calcula el pixel correspondiente en el plano z usando la fórmula inversa: z = (d*w - b) / (a - c*w)
+            z_x = int(round(z_pixel.real)) 
             z_y = int(round(z_pixel.imag))
             if 0 <= z_x < orig_w and 0 <= z_y < orig_h:
                 output[y, x] = original[z_y, z_x]
