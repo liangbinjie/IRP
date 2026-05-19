@@ -1,0 +1,11 @@
+digit,true,pred,file
+0,0,0,img\output\0\digit_00403.png
+1,1,1,img\output\1\digit_00403.png
+2,2,-1,img\output\2\digit_00403.png
+3,3,3,img\output\3\digit_00406.png
+4,4,-1,img\output\4\digit_00403.png
+5,5,-1,img\output\5\digit_00394.png
+6,6,-1,img\output\6\digit_00389.png
+7,7,-1,img\output\7\digit_00399.png
+8,8,4,img\output\8\digit_00382.png
+9,9,-1,img\output\9\digit_00378.png
