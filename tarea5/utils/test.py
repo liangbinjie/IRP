@@ -8,7 +8,7 @@ Vamos a ir carpeta por carpeta para determinar el porcentaje de reconocimiento c
 Para esto se requiere 
 - Generar los Hu Moments de una celda
 - Comparar los Hu Moments de cada celda con el resumen (hu_results): por cada fila,
-  contar cuántos momentos caen en [mean - std, mean + std] y elegir la fila con más coincidencias
+  contar cuántos momentos caen en [mean - std*PERCENTAGE, mean + std*PERCENTAGE] y elegir la fila con más coincidencias
 - Determinar si el dígito predicho coincide con el de la carpeta, y llevar un conteo de aciertos y errores
 - Al final, imprimir el porcentaje de aciertos para cada carpeta de digito
 
@@ -24,6 +24,8 @@ try:
     HAS_MATPLOTLIB = True
 except ImportError:
     HAS_MATPLOTLIB = False
+
+PERCENTAGE = 0.4
 
 
 def cargar_hu_summary(summary_csv_path: str) -> dict:
@@ -60,18 +62,20 @@ def predecir_digito(hu_moments: np.ndarray, hu_summary: dict) -> str:
     devuelve la etiqueta (label) cuya fila del resumen coincida con más momentos.
 
     Para cada fila del resumen, se cuenta cuántos momentos caen dentro del rango
-    [mean - std, mean + std]. Gana la fila con más coincidencias; en empate,
+    [mean - std*PERCENTAGE, mean + std*PERCENTAGE]. Gana la fila con más coincidencias; en empate,
     gana la de menor distancia euclidiana normalizada.
     """
     epsilon = 1e-30
     mejor_label = None
     mejor_coincidencias = -1
     mejor_distancia = float("inf")
+    margen = PERCENTAGE
 
     for label, stats in hu_summary.items():
         means = stats["means"]
         stds = stats["stds"]
-        en_rango = (hu_moments >= means - stds) & (hu_moments <= means + stds)
+        banda = stds * margen
+        en_rango = (hu_moments >= means - banda) & (hu_moments <= means + banda)
         coincidencias = int(np.sum(en_rango))
 
         diff = hu_moments - means
@@ -165,6 +169,7 @@ def test_hu_moments(test_dir: str, hu_results_dir: str) -> None:
     y_true: list[int] = []
     y_pred: list[int] = []
 
+    print(f"\nRango de clasificación: [avg - std×{PERCENTAGE}, avg + std×{PERCENTAGE}]")
     print("\n" + "=" * 50)
     print(f"{'Dígito':<10} {'Aciertos':<12} {'Total':<10} {'Precisión':>10}")
     print("=" * 50)
