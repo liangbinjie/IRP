@@ -1,0 +1,14 @@
+Los numeros 3 tienen un trazo similar a 7, dado que hay gente que escribe el 7 con un palo en medio
+
+Menos datos de entrenamiento tienden a afectar la precision
+
+Un k mayor si tiende a mejores resultados, sin embargo, si los datos de entrenamiento no son lo suficientemente 
+buenos, la precision puede bajar e incluso dar resultados erroneos.
+Tambien es posible que se estanque en un maximo.
+
+Probar con pocos datos tiende a dar resultados no esperables, pero si metemos mas datos, tiende a dar mejores resultados en la precision
+
+Digitos de prueba como el 6 a veces parecian un 1. Lo mismo con el 8. 
+
+A veces algunos trazos de los digitos no estan completos, hay que ponerle mas presion a la punta para que se note los trazos y no se pierda en el preprocesamiento
+Se puede aumentar el DPI
