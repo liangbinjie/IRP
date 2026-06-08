@@ -1,0 +1,17 @@
+El uso de SVM para clasificar imagenes desde la metodologia utilizada no es lo suficiente efectivo. Pues nuestra metodologia se basó en crear un vector plano
+de una imagen, pasando solo los valores de los pixeles al SVM. Descubrimos que dependiendo de la cantidad de datos y la variedad de datos que la precision de este
+cambia drasticamente. A veces puede dar una precision de 70%, mientras que en otros casos una precision de 40%
+
+En usos contemporaneos, se incorpora metodos como la extraccion manual de caracteristicas de una imagen, normalmente
+se utiliza algoritmos como el de histogramas orientadas a gradientes (HOG) o patrones binarios locales (LBP) para extraer bordes y texturas.
+
+Y todavia mas efectivo, es la incorporacion de redes neuronales convulacionales, un estandar en la industria moderna, donde diversas herramientas como YOLO
+lo utilizan para clasificar y reconocer objetos en imagenes.
+
+https://www.geeksforgeeks.org/machine-learning/image-classification-using-support-vector-machine-svm-in-python/
+
+https://arxiv.org/abs/2409.00821
+
+https://ieeexplore.ieee.org/document/10956324
+
+https://www.youtube.com/watch?v=upo34AT1Cys
